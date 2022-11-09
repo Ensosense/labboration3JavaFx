@@ -12,9 +12,6 @@ import java.nio.file.Path;
 
 public class ShapeModel {
 
-
-
-
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
     ObjectProperty<String> size = new SimpleObjectProperty<>("100");
     ObjectProperty<ShapeType> shape = new SimpleObjectProperty<>(ShapeType.CIRCLE);
