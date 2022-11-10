@@ -6,19 +6,27 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ShapeModelTest {
-    ShapeModel model = new ShapeModel();
+
+    MyShape circle = new MyCircle(10, 20, 100, Color.GOLD);
+    MyShape square = new MySquare(50, 50, 150, Color.PINK);
 
     @Test
     void checkIfShapeObjectsAddsToTheList() {
 
-        MyShape circle = new MyCircle(10, 20, 100, Color.GOLD);
-        MyShape square = new MySquare(50, 50, 150, Color.PINK);
+        ShapeModel.myShapes.clear();
 
         ShapeModel.myShapes.add(circle);
         ShapeModel.myShapes.add(square);
-
         assertEquals(2, ShapeModel.myShapes.size());
+    }
 
+    @Test
+    void checkIfTheRequiredShapeCreates() {
+
+        ShapeModel.myShapes.clear();
+
+        ShapeModel.myShapes.add(square);
+        assertEquals(square, ShapeModel.myShapes.get(0));
     }
 
 }
