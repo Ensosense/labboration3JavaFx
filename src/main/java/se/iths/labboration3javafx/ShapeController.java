@@ -61,18 +61,18 @@ public class ShapeController {
 
     public void onSave() {
 
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Save");
-            fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
-            fileChooser.getExtensionFilters().clear();
-            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SVG", "*.svg"));
-            fileChooser.setInitialFileName("MyCanvas");
-            File filepath = fileChooser.showSaveDialog(stage);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+        fileChooser.getExtensionFilters().clear();
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SVG", "*.svg"));
+        fileChooser.setInitialFileName("MyCanvas");
+        File filepath = fileChooser.showSaveDialog(stage);
 
-            if (filepath != null) {
-                java.nio.file.Path path = java.nio.file.Path.of(filepath.toURI());
-                model.saveToFile(path, this);
-            }
+        if (filepath != null) {
+            java.nio.file.Path path = java.nio.file.Path.of(filepath.toURI());
+            model.saveToFile(path, this);
+        }
     }
 
     public void clearAllShapes() {

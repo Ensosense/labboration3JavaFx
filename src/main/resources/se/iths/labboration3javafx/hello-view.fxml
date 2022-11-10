@@ -12,7 +12,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="873.0" style="-fx-background-color: #dedfd8;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="se.iths.labboration3javafx.ShapeController">
     <children>
-        <ColorPicker fx:id="colorpicker" layoutX="175.0" layoutY="44.0" prefHeight="28.0" prefWidth="116.0" promptText="color">
+        <ColorPicker fx:id="colorpicker" layoutX="139.0" layoutY="44.0" prefHeight="28.0" prefWidth="116.0" promptText="color">
             <value>
                 <Color red="0.9058823585510254" green="0.8666666746139526" blue="0.8666666746139526" />
             </value></ColorPicker>
@@ -21,26 +21,31 @@
             <font>
                 <Font name="Yu Gothic Light" size="12.0" />
             </font></Button>
-        <Button fx:id="onDeleteAll" layoutX="607.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#clearAllShapes" opacity="0.7" style="-fx-background-color: #9aac78;" text="Delete" textFill="WHITE" textOverrun="CLIP">
+        <Button fx:id="onDeleteAll" layoutX="610.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#clearAllShapes" opacity="0.7" style="-fx-background-color: #9aac78;" text="Delete" textFill="WHITE" textOverrun="CLIP">
             <font>
                 <Font name="Yu Gothic Light" size="12.0" />
             </font></Button>
-        <ChoiceBox fx:id="choiceBox" layoutX="78.0" layoutY="44.0" prefHeight="25.0" prefWidth="60.0" />
-        <TextField fx:id="textField" layoutX="344.0" layoutY="46.0" prefHeight="25.0" prefWidth="116.0" promptText="size" />
-        <Label layoutX="78.0" layoutY="24.0" prefHeight="17.0" prefWidth="50.0" text="Shape" textOverrun="CLIP">
+        <ChoiceBox fx:id="choiceBox" layoutX="60.0" layoutY="44.0" prefHeight="25.0" prefWidth="60.0" />
+        <TextField fx:id="textField" layoutX="277.0" layoutY="46.0" prefHeight="25.0" prefWidth="116.0" promptText="size" />
+        <Label layoutX="61.0" layoutY="24.0" prefHeight="17.0" prefWidth="50.0" text="Shape" textOverrun="CLIP">
             <font>
                 <Font name="Yu Gothic Light" size="12.0" />
             </font>
         </Label>
-        <Label layoutX="175.0" layoutY="24.0" prefHeight="17.0" prefWidth="50.0" text="Color">
+        <Label layoutX="141.0" layoutY="24.0" prefHeight="17.0" prefWidth="50.0" text="Color">
             <font>
                 <Font name="Yu Gothic Light" size="12.0" />
             </font>
         </Label>
-        <Button fx:id="undo" layoutX="675.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#undoLastShape" opacity="0.7" style="-fx-background-color: #9aac78;" text="Undo last shape" textFill="WHITE">
+        <Button fx:id="undo" layoutX="673.0" layoutY="47.0" mnemonicParsing="false" onMouseClicked="#undoLastShape" opacity="0.7" style="-fx-background-color: #9aac78;" text="Undo last shape" textFill="WHITE">
             <font>
                 <Font name="Yu Gothic Light" size="12.0" />
             </font>
         </Button>
+      <Label layoutX="279.0" layoutY="24.0" prefHeight="17.0" prefWidth="50.0" text="Size">
+         <font>
+            <Font name="Yu Gothic Light" size="12.0" />
+         </font>
+      </Label>
     </children>
 </Pane>

@@ -19,7 +19,7 @@ public class ShapeModel {
     ObservableList<MyShape> selectedShape = FXCollections.observableArrayList();
 
 
-    ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
+    ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.LIGHTPINK);
     ObjectProperty<String> size = new SimpleObjectProperty<>("100");
     ObjectProperty<ShapeType> shape = new SimpleObjectProperty<>(ShapeType.CIRCLE);
 
@@ -36,29 +36,8 @@ public class ShapeModel {
         return color;
     }
 
-    public void setColor(Color color) {
-        this.color.set(color);
-    }
-
-
-    public ObjectProperty<String> sizeProperty() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size.set(size);
-    }
-
-    public ShapeType getShape() {
-        return shape.get();
-    }
-
     public ObjectProperty<ShapeType> shapeProperty() {
         return shape;
-    }
-
-    public void setShape(ShapeType shape) {
-        this.shape.set(shape);
     }
 
     //Factory pattern

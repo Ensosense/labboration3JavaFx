@@ -3,8 +3,8 @@ package se.iths.labboration3javafx;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
-public class MySquare extends MyShape {
 
+public class MySquare extends MyShape {
 
     public MySquare(double x, double y, double size, Color color) {
         super(x, y, size, color);
@@ -21,13 +21,10 @@ public class MySquare extends MyShape {
         }
     }
 
-
     public String svg() {
 
         String color = "#" + getColor().toString().substring(2, 10);
-        return "<rect x=\"" + getX() + "\" y=\"" + getY() + "\" width=\"" + getSize() + "\" height=\"" + getSize() + "\" fill=\"" + color + "\" />";
-
-
+        return "<rect x=\"" + Math.round(getX()) + "\" y=\"" + Math.round(getY()) + "\" width=\"" + getSize() + "\" height=\"" + getSize() + "\" fill=\"" + color + "\" />";
     }
 
     @Override

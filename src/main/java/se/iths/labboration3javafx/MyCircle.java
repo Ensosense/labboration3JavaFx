@@ -8,10 +8,8 @@ import static java.lang.Math.sqrt;
 
 public class MyCircle extends MyShape {
 
-    private double radius;
-
     public MyCircle(double x, double y, double size, Color color) {
-        super(x, y, size * 1.5, color);
+        super(x, y, size, color);
     }
 
     @Override
@@ -32,7 +30,7 @@ public class MyCircle extends MyShape {
     public String svg() {
 
         String color = "#" + getColor().toString().substring(2, 10);
-        return "<circle cx=\"" + getX() + "\" cy=\"" + getY() + "\" r=\"" + getSize() / 2 + "\" fill=\"" + color + "\" />";
+        return "<circle cx=\"" + Math.round(getX()) + "\" cy=\"" + Math.round(getY()) + "\" r=\"" + getSize() / 2 + "\" fill=\"" + color + "\" />";
     }
 
     @Override

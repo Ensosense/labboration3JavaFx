@@ -55,6 +55,7 @@ public abstract class MyShape {
     public void setSelectedField(boolean selectedField) {
         this.selectedField = selectedField;
     }
+
     public abstract String svg();
 
     public abstract boolean isSelected(double x, double y);
