@@ -33,7 +33,7 @@ public class ShapeController {
         textField.textProperty().bindBidirectional(model.size);
         colorpicker.valueProperty().bindBidirectional(model.colorProperty());
         choiceBox.valueProperty().bindBidirectional(model.shapeProperty());
-        choiceBox.setItems(ShapeModel.shapeTypesList);
+        choiceBox.setItems(model.shapeTypesList);
         context = canvas.getGraphicsContext2D();
 
     }
@@ -45,13 +45,14 @@ public class ShapeController {
             model.createAndAddNewShape(mouseEvent, this);
 
         } else {
-            for (MyShape s : ShapeModel.myShapes) {
 
-                if (s.isSelected(mouseEvent.getX(), mouseEvent.getY())) {
-                    model.changeSelectedShape(s, this);
-                    model.storeSetSelectedField(s, this);
-                }
-            }
+            model.myShapes.stream()
+                    .filter(s -> s.isSelected(mouseEvent.getX(), mouseEvent.getY()))
+                    .reduce((first, second) -> second)
+                    .ifPresent(s -> {
+                        model.changeSelectedShape(s, this);
+                        model.storeSetSelectedField(s, this);
+                    });
         }
         model.reDraw(this);
 
@@ -60,33 +61,30 @@ public class ShapeController {
 
     public void onSave() {
 
-        {
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Save");
             fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
             fileChooser.getExtensionFilters().clear();
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("SVG", "*.svg"));
-            fileChooser.setInitialFileName("MyMasterpiece");
+            fileChooser.setInitialFileName("MyCanvas");
             File filepath = fileChooser.showSaveDialog(stage);
 
             if (filepath != null) {
                 java.nio.file.Path path = java.nio.file.Path.of(filepath.toURI());
                 model.saveToFile(path, this);
             }
-
-        }
     }
 
     public void clearAllShapes() {
 
-        ShapeModel.myShapes.clear();
+        model.myShapes.clear();
         context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        System.out.println(ShapeModel.myShapes);
+        System.out.println(model.myShapes);
     }
 
     public void undoLastShape(MouseEvent event) {
 
-        ShapeModel.myShapes.remove(ShapeModel.myShapes.size() - 1);
+        model.myShapes.remove(model.myShapes.size() - 1);
         model.reDraw(this);
     }
 

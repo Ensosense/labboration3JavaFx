@@ -14,9 +14,9 @@ import java.nio.file.Path;
 
 public class ShapeModel {
 
-    static ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
-    static ObservableList<MyShape> myShapes = FXCollections.observableArrayList();
-    static ObservableList<MyShape> selectedShape = FXCollections.observableArrayList();
+    ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
+    ObservableList<MyShape> myShapes = FXCollections.observableArrayList();
+    ObservableList<MyShape> selectedShape = FXCollections.observableArrayList();
 
 
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
@@ -78,16 +78,16 @@ public class ShapeModel {
                 "     width=\"857.0\" height=\"576.0\"\n" +
                 "     xmlns=\"http://www.w3.org/2000/svg\">");
 
-        for(MyShape shape1: myShapes) {
+        for (MyShape shape1 : myShapes) {
             outPut.append(shape1.svg());
             outPut.append("\n");
         }
 
-        outPut.append("\n" + "</svg>" );
+        outPut.append("\n" + "</svg>");
 
-        try{
+        try {
             Files.writeString(path, outPut.toString());
-        }catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
@@ -108,7 +108,7 @@ public class ShapeModel {
     }
 
     void storeSetSelectedField(MyShape s, ShapeController shapeController) {
-        for (MyShape d: myShapes) {
+        for (MyShape d : myShapes) {
             d.setSelectedField(false);
         }
         s.setSelectedField(true);

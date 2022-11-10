@@ -3,30 +3,29 @@ package se.iths.labboration3javafx;
 import javafx.scene.paint.Color;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.FactoryBasedNavigableListAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
+
 
 class ShapeModelTest {
 
-    MyShape circle = new MyCircle(10, 20, 100, Color.GOLD);
-    MyShape square = new MySquare(50, 50, 150, Color.PINK);
+    ShapeModel model = new ShapeModel();
 
     @Test
-    void checkIfShapeObjectsAddsToTheList() {
+    void checkIfSetColorMethodWorksProperly() {
 
-        ShapeModel.myShapes.clear();
-
-        ShapeModel.myShapes.add(circle);
-        ShapeModel.myShapes.add(square);
-        assertEquals(2, ShapeModel.myShapes.size());
+        MyShape square = model.createShape(ShapeType.SQUARE, 50, 50);
+        square.setColor(Color.PALEGREEN);
+        assertEquals(Color.PALEGREEN, square.getColor());
     }
 
     @Test
     void checkIfTheRequiredShapeCreates() {
 
-        ShapeModel.myShapes.clear();
-
-        ShapeModel.myShapes.add(square);
-        assertEquals(square, ShapeModel.myShapes.get(0));
+       var circle = model.createShape(ShapeType.CIRCLE, 50, 50);
+        assertEquals(50, circle.getX());
+        assertEquals(50, circle.getY());
+        assertEquals(MyCircle.class, circle.getClass());
     }
 
 }

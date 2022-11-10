@@ -11,7 +11,7 @@ public class MyCircle extends MyShape {
     private double radius;
 
     public MyCircle(double x, double y, double size, Color color) {
-        super(x, y, size*1.5, color);
+        super(x, y, size * 1.5, color);
     }
 
     @Override
@@ -42,6 +42,6 @@ public class MyCircle extends MyShape {
         double distY = y2 - getY();
 
         double distance = sqrt((distX * distX) + (distY * distY));
-        return distance <= getSize();
+        return distance <= getSize() / 2;
     }
 }
