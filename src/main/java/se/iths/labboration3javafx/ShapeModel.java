@@ -2,6 +2,8 @@ package se.iths.labboration3javafx;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
@@ -11,6 +13,11 @@ import java.nio.file.Path;
 
 
 public class ShapeModel {
+
+    static ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
+    static ObservableList<MyShape> myShapes = FXCollections.observableArrayList();
+    static ObservableList<MyShape> selectedShape = FXCollections.observableArrayList();
+
 
     ObjectProperty<Color> color = new SimpleObjectProperty<>(Color.RED);
     ObjectProperty<String> size = new SimpleObjectProperty<>("100");
@@ -71,7 +78,7 @@ public class ShapeModel {
                 "     width=\"857.0\" height=\"576.0\"\n" +
                 "     xmlns=\"http://www.w3.org/2000/svg\">");
 
-        for(MyShape shape1: shapeController.myShapes) {
+        for(MyShape shape1: myShapes) {
             outPut.append(shape1.svg());
             outPut.append("\n");
         }
@@ -87,7 +94,7 @@ public class ShapeModel {
     }
 
     void changeSelectedShape(MyShape s, ShapeController shapeController) {
-        shapeController.selectedShape.add(s);
+        selectedShape.add(s);
         s.setColor(getColor());
         s.setSize(Double.parseDouble(getSize()));
         System.out.println("Im drawing on selected");
@@ -95,13 +102,13 @@ public class ShapeModel {
 
     void createAndAddNewShape(MouseEvent mouseEvent, ShapeController shapeController) {
         MyShape myShape = createShape(shapeController.choiceBox.getValue(), mouseEvent.getX(), mouseEvent.getY());
-        shapeController.myShapes.add(myShape);
+        myShapes.add(myShape);
         System.out.println("Im drawing");
         System.out.println(myShape.svg());
     }
 
     void storeSetSelectedField(MyShape s, ShapeController shapeController) {
-        for (MyShape d: shapeController.myShapes) {
+        for (MyShape d: myShapes) {
             d.setSelectedField(false);
         }
         s.setSelectedField(true);
@@ -109,7 +116,7 @@ public class ShapeModel {
 
     void reDraw(ShapeController shapeController) {
         shapeController.context.clearRect(0, 0, shapeController.canvas.getWidth(), shapeController.canvas.getHeight());
-        for (MyShape s : shapeController.myShapes) {
+        for (MyShape s : myShapes) {
             s.draw(shapeController.context);
         }
     }

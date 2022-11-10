@@ -38,7 +38,14 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>3.23.1</version>
+            <!--<scope>test</scope> --> <!-- I have commented this line out and it worked -->
+        </dependency>
     </dependencies>
+
 
     <build>
         <plugins>

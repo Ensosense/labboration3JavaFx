@@ -1,8 +1,6 @@
 package se.iths.labboration3javafx;
 
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Button;
@@ -30,16 +28,12 @@ public class ShapeController {
 
     ShapeModel model = new ShapeModel();
 
-    ObservableList<ShapeType> shapeTypesList = FXCollections.observableArrayList(ShapeType.values());
-    ObservableList<MyShape> myShapes = FXCollections.observableArrayList();
-    ObservableList<MyShape> selectedShape = FXCollections.observableArrayList();
-
     public void initialize() {
 
         textField.textProperty().bindBidirectional(model.size);
         colorpicker.valueProperty().bindBidirectional(model.colorProperty());
         choiceBox.valueProperty().bindBidirectional(model.shapeProperty());
-        choiceBox.setItems(shapeTypesList);
+        choiceBox.setItems(ShapeModel.shapeTypesList);
         context = canvas.getGraphicsContext2D();
 
     }
@@ -51,7 +45,7 @@ public class ShapeController {
             model.createAndAddNewShape(mouseEvent, this);
 
         } else {
-            for (MyShape s : myShapes) {
+            for (MyShape s : ShapeModel.myShapes) {
 
                 if (s.isSelected(mouseEvent.getX(), mouseEvent.getY())) {
                     model.changeSelectedShape(s, this);
@@ -85,14 +79,14 @@ public class ShapeController {
 
     public void clearAllShapes() {
 
-        myShapes.clear();
+        ShapeModel.myShapes.clear();
         context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
-        System.out.println(myShapes);
+        System.out.println(ShapeModel.myShapes);
     }
 
     public void undoLastShape(MouseEvent event) {
 
-        myShapes.remove(myShapes.size() - 1);
+        ShapeModel.myShapes.remove(ShapeModel.myShapes.size() - 1);
         model.reDraw(this);
     }
 
